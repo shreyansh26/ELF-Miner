@@ -168,7 +168,6 @@ def relocation_section(file):
 		for line in file :
 			if len(line.split())>2 :
 				rt = line.split()[2]
-				print(rt)
 				if rt in reloc_type:
 					if rt in r_type.keys():
 						r_type[rt] += 1
