@@ -342,7 +342,7 @@ class ReadElf(object):
                     describe_sh_flags(section['sh_flags']),
                     section['sh_link'], section['sh_info'],
                     section['sh_addralign']))
-                indi_list.extend([describe_sh_flags(section['sh_flags']), self._format_hex(section['sh_size'], fieldsize=6, lead0x=False), section['sh_link'], section['sh_info'], section['sh_addralign']])
+                indi_list.extend([describe_sh_flags(section['sh_flags']), self._format_hex(section['sh_size'], fieldsize=6, lead0x=False), self._format_hex(section['sh_entsize'], fieldsize=2, lead0x=False), section['sh_link'], section['sh_info'], section['sh_addralign']])
             else: # 64
                 self._emitline(' %s  %s' % (
                     self._format_hex(section['sh_addr'], fullhex=True, lead0x=False),
@@ -355,7 +355,7 @@ class ReadElf(object):
                     describe_sh_flags(section['sh_flags']),
                     section['sh_link'], section['sh_info'],
                     section['sh_addralign']))
-                indi_list.extend([describe_sh_flags(section['sh_flags']), self._format_hex(section['sh_size'], fullhex=True, lead0x=False), section['sh_link'], section['sh_info'], section['sh_addralign']])
+                indi_list.extend([describe_sh_flags(section['sh_flags']), self._format_hex(section['sh_size'], fullhex=True, lead0x=False), self._format_hex(section['sh_entsize'], fullhex=True, lead0x=False), section['sh_link'], section['sh_info'], section['sh_addralign']])
 
             sections_data_list.append(indi_list)
 
