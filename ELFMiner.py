@@ -8,6 +8,8 @@ import csv
 features = []
 headers = []
 
+final_report = "a.txt"
+
 def prepare_headers():
 	headers.extend(["Name", "1_Identification", "1_MachineType", "1_ELFVersion", "1_EntryPointAddress", "1_ProgramHeaderOffset", "1_SectionHeaderOffset", "1_Flags", "1_HeaderSize", "1_SizeProgramHeader", "1_EntriesProgram", "1_SizeSectionHeader", "1_EntriesSection", "1_StringTableIndex"])
 	print(len(headers))
@@ -23,8 +25,7 @@ def prepare_headers():
 
 	print(len(headers))
 
-def input_file():
-	file = sys.argv[1]
+def input_file(file):
 	features.append(file)
 	print("Input file: %s" % file)
 	try:
@@ -60,8 +61,7 @@ def section_headers(elf):
 		except:
 			continue
 
-def symbols_table(elf):
-	file = sys.argv[1]
+def symbols_table(file):
 	dyna_st_type="NOTYPE|OBJECT|FUNC|SECTION|FILE|COMMON|SPARC_REGISTER|TLS|LOOS|HIOS|LOPROC|HIPROC"
 	dyna_st_bind="LOCAL|GLOBAL|WEAK|LOOS|HIOS|LOPROC|HIPROC"
 	syms = subprocess.check_output(["readelf","-s",file])
@@ -69,7 +69,7 @@ def symbols_table(elf):
 	symT_name = {'s_STB_LOCAL': 0, 'symbol_tab': 0, 's_STT_NOTYPE_STB_GLOBAL': 0, 's_STT_OBJECT_STB_WEAK': 0, 's_STB_GLOBAL': 0, 's_STB_WEAK': 0, 's_STT_NOTYPE_STB_LOCAL': 0, 's_STT_FUNC': 0, 's_STT_FUNC_STB_GLOBAL': 0, 's_STT_OBJECT_STB_GLOBAL': 0, 's_STT_NOTYPE_STB_WEAK': 0, 's_STT_NOTYPE': 0, 's_STT_OBJECT': 0, 's_STT_FUNC_STB_WEAK': 0, 's_STT_FUNC_STB_LOCAL': 0, 's_STT_OBJECT_STB_LOCAL': 0, 's_STT_OBJECT_STB_LOCAL': 0, 's_STT_SECTION_STB_LOCAL': 0, 's_STT_SECTION_STB_GLOBAL': 0}
 	dynF_name={}
 	symF_name = {}
-	final_report = "a.txt"
+
 	f = open(final_report, 'w')
 	f.write(syms)
 	f.close()
@@ -124,10 +124,9 @@ def symbols_table(elf):
 		headers.append(i[0])
 		features.append(i[1])
 
-def dynamic_section(elf):
-	file = sys.argv[1]
+def dynamic_section(file):
 	dynamic = subprocess.check_output(["readelf","-d", file])
-	final_report = "a.txt"
+
 	f = open(final_report, 'w')
 	f.write(dynamic)
 	f.close()
@@ -151,7 +150,32 @@ def dynamic_section(elf):
 	for i in dynamic_name.items():
 		headers.append(i[0])
 		features.append(i[1])
-	
+
+def relocation_section(file):
+	reloc_type="R_386_NONE|R_386_32|R_386_PC32|R_386_GOT32|R_386_PLT32|R_386_COPY|R_386_GLOB_DAT|R_386_JUMP_SLOT|R_386_RELATIVE|R_386_GOTOFF|R_386_GOTPC|R_386_32PLT|R_386_16|R_386_PC16|R_386_8|R_386_PC8|R_386_SIZE32"
+
+	r_type = {}
+	for i in reloc_type.split('|'):
+		r_type[i] = 0
+
+	reloc = subprocess.check_output(["readelf", "-r", file])
+
+	f = open(final_report, 'w')
+	f.write(reloc)
+	f.close()
+
+	with open(final_report,'r') as file:
+		for line in file :
+			if len(line.split())>2 :
+				rt = line.split()[2]
+				print(rt)
+				if rt in reloc_type:
+					if rt in r_type.keys():
+						r_type[rt] += 1
+					else:
+						r_type[rt] = 1
+
+	print(r_type)
 
 def write_csv():
 	# print(features)
@@ -162,10 +186,12 @@ def write_csv():
 		writer.writerow(features)
 
 if __name__ == "__main__":
+	file = sys.argv[1]
 	prepare_headers()
-	elf = input_file()
+	elf = input_file(file)
 	elf_headers(elf)
 	section_headers(elf)
-	symbols_table(elf)
-	dynamic_section(elf)	
+	symbols_table(file)
+	dynamic_section(file)
+	relocation_section(file)  
 	write_csv()
