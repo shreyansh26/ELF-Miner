@@ -178,6 +178,22 @@ def relocation_section(file):
 		headers.append(i[0])
 		features.append(i[1])
 
+def got_size():
+	try:
+		ind1 = headers.index(".got_size")
+		val1 = features[ind1]
+	except:
+		val1 = 0
+	try:
+		ind2 = headers.index(".got.plt_size")
+		val2 = features[ind2]
+	except:
+		val2 = 0
+
+	value = int(val1, 16) + int(val2, 16)
+	headers.append("GOT_SIZE")
+	features.append(value)
+	
 def write_csv():
 	# print(features)
 	# print(headers)
@@ -195,4 +211,5 @@ if __name__ == "__main__":
 	symbols_table(file)
 	dynamic_section(file)
 	relocation_section(file)  
+	got_size()
 	write_csv()
