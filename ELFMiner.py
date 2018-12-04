@@ -175,7 +175,9 @@ def relocation_section(file):
 					else:
 						r_type[rt] = 1
 
-	print(r_type)
+	for i in r_type.items():
+		headers.append(i[0])
+		features.append(i[1])
 
 def write_csv():
 	# print(features)
