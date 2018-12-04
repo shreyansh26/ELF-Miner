@@ -9,14 +9,14 @@ features = []
 headers = []
 
 final_report = "a.txt"
-
+section_list_size = 0
 def prepare_headers():
 	headers.extend(["Name", "1_Identification", "1_MachineType", "1_ELFVersion", "1_EntryPointAddress", "1_ProgramHeaderOffset", "1_SectionHeaderOffset", "1_Flags", "1_HeaderSize", "1_SizeProgramHeader", "1_EntriesProgram", "1_SizeSectionHeader", "1_EntriesSection", "1_StringTableIndex"])
 	print(len(headers))
-	sections_list = [".text", ".bss", ".comment", ".data", ".data1", ".debug", ".dynamic", ".dynstr", "dynsym", ".fini", ".hash", ".init", ".got", ".interp", ".line", ".note", ".plt", ".rodata", "rodata1", ".shstrtab", ".strtab", ".symtab", ".sdata", ".sbss", ".lit8", ".gptab", ".conflict", ".tdesc", ".lit4", ".reginfo", ".liblist", ".rel.dyn", ".rel.plt", ".got.plt"]
+	sections_list = [".text", ".bss", ".comment", ".data", ".data1", ".debug", ".dynamic", ".dynstr", "dynsym", ".fini", ".hash", ".gnu.hash", ".init", ".got", ".interp", ".line", ".note", ".plt", ".rodata", "rodata1", ".shstrtab", ".strtab", ".symtab", ".sdata", ".sbss", ".lit8", ".gptab", ".conflict", ".tdesc", ".lit4", ".reginfo", ".liblist", ".rel.dyn", ".rel.plt", ".got.plt"]
 
-	suffix_list = ["_type", "_flags", "_size", "_table_index_link", "_info", "_alignment"]
-
+	suffix_list = ["_type", "_flags", "_size", "_entsize", "_table_index_link", "_info", "_alignment"]
+	section_list_size = len(sections_list)
 	for i in sections_list:
 		a = []
 		for j in suffix_list:
@@ -51,7 +51,7 @@ def elf_headers(elf):
 def section_headers(elf):
 	# elf = input_file()
 	sections_data_list = process(sys.argv[1])[0][1:]
-	features_new = [""] * 204
+	features_new = [""] * 245
 	features.extend(features_new)
 	for i, section_data in enumerate(sections_data_list):
 		try:
@@ -181,19 +181,35 @@ def relocation_section(file):
 def got_size():
 	try:
 		ind1 = headers.index(".got_size")
-		val1 = features[ind1]
+		val1 = int(features[ind1], 16)
 	except:
 		val1 = 0
 	try:
 		ind2 = headers.index(".got.plt_size")
-		val2 = features[ind2]
+		val2 = int(features[ind2], 16)
 	except:
 		val2 = 0
 
-	value = int(val1, 16) + int(val2, 16)
+	value = val1 + val2
 	headers.append("GOT_SIZE")
 	features.append(value)
-	
+
+def hash_table_size():
+	try:
+		ind1 = headers.index(".gnu.hash_size")
+		val1 = int(features[ind1], 16)
+	except:
+		val1 = 0
+	try:
+		ind2 = headers.index(".hash_size")
+		val2 = int(features[ind2], 16)
+	except:
+		val2 = 0
+
+	value = val1 + val2
+	headers.append("HASH_SIZE")
+	features.append(value)
+
 def write_csv():
 	# print(features)
 	# print(headers)
@@ -212,4 +228,5 @@ if __name__ == "__main__":
 	dynamic_section(file)
 	relocation_section(file)  
 	got_size()
+	hash_table_size()
 	write_csv()
