@@ -102,3 +102,13 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+
+# Project related
+callme32
+bash
+readelf.py
+readelf2.py
+pyelftools-master.zip
+Program_Headers_Output.png
+a.txt
