@@ -13,7 +13,7 @@ section_list_size = 0
 def prepare_headers():
 	headers.extend(["Name", "Identification", "MachineType", "ELFVersion", "EntryPointAddress", "ProgramHeaderOffset", "SectionHeaderOffset", "Flags", "HeaderSize", "SizeProgramHeader", "EntriesProgram", "SizeSectionHeader", "EntriesSection", "StringTableIndex"])
 	print(len(headers))
-	sections_list = [".text", ".bss", ".comment", ".data", ".data1", ".debug", ".dynamic", ".dynstr", "dynsym", ".fini", ".hash", ".gnu.hash", ".init", ".got", ".interp", ".line", ".note", ".plt", ".rodata", "rodata1", ".shstrtab", ".strtab", ".symtab", ".sdata", ".sbss", ".lit8", ".gptab", ".conflict", ".tdesc", ".lit4", ".reginfo", ".liblist", ".rel.dyn", ".rel.plt", ".got.plt"]
+	sections_list = [".text", ".bss", ".comment", ".data", ".data1", ".debug", ".dynamic", ".dynstr", ".dynsym", ".fini", ".hash", ".gnu.hash", ".init", ".got", ".interp", ".line", ".note", ".plt", ".rodata", "rodata1", ".shstrtab", ".strtab", ".symtab", ".sdata", ".sbss", ".lit8", ".gptab", ".conflict", ".tdesc", ".lit4", ".reginfo", ".liblist", ".rel.dyn", ".rel.plt", ".got.plt"]
 
 	suffix_list = ["_type", "_flags", "_size", "_entsize", "_table_index_link", "_info", "_alignment"]
 	section_list_size = len(sections_list)
