@@ -11,7 +11,7 @@ headers = []
 final_report = "a.txt"
 section_list_size = 0
 def prepare_headers():
-	headers.extend(["Name", "1_Identification", "1_MachineType", "1_ELFVersion", "1_EntryPointAddress", "1_ProgramHeaderOffset", "1_SectionHeaderOffset", "1_Flags", "1_HeaderSize", "1_SizeProgramHeader", "1_EntriesProgram", "1_SizeSectionHeader", "1_EntriesSection", "1_StringTableIndex"])
+	headers.extend(["Name", "Identification", "MachineType", "ELFVersion", "EntryPointAddress", "ProgramHeaderOffset", "SectionHeaderOffset", "Flags", "HeaderSize", "SizeProgramHeader", "EntriesProgram", "SizeSectionHeader", "EntriesSection", "StringTableIndex"])
 	print(len(headers))
 	sections_list = [".text", ".bss", ".comment", ".data", ".data1", ".debug", ".dynamic", ".dynstr", "dynsym", ".fini", ".hash", ".gnu.hash", ".init", ".got", ".interp", ".line", ".note", ".plt", ".rodata", "rodata1", ".shstrtab", ".strtab", ".symtab", ".sdata", ".sbss", ".lit8", ".gptab", ".conflict", ".tdesc", ".lit4", ".reginfo", ".liblist", ".rel.dyn", ".rel.plt", ".got.plt"]
 
