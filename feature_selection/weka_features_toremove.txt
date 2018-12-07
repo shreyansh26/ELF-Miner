@@ -1,3 +1,4 @@
+0                          EntryPointAddress
 0                       54 .debug_table_index_link
 0                      279 s_STT_SECTION_STB_LOCAL
 0                      277 s_STT_SECTION_STB_GLOBAL
