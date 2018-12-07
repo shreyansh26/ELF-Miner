@@ -1,0 +1,48 @@
+=== Run information ===
+
+Scheme:weka.classifiers.rules.JRip -F 3 -N 2.0 -O 2 -S 1
+Relation:     final-weka.filters.unsupervised.attribute.Remove-R1
+Instances:    9125
+Attributes:   148
+[list of attributes omitted]
+Test mode:split 70.0% train, remainder test
+
+=== Classifier model (full training set) ===
+
+JRIP rules:
+===========
+
+(.dynamic_size >= 464) => label=B (2188.0/12.0)
+(Identification = 7f 45 4c 46 02 01 01 03 00 00 00 00 00 00 00 00) and (EntryPointAddress = 401750.0) => label=B (2.0/0.0)
+ => label=M (6935.0/2.0)
+
+Number of Rules : 3
+
+
+Time taken to build model: 1.23 seconds
+
+=== Evaluation on test split ===
+=== Summary ===
+
+Correctly Classified Instances        2729               99.7077 %
+Incorrectly Classified Instances         8                0.2923 %
+Kappa statistic                          0.9921
+Mean absolute error                      0.0042
+Root mean squared error                  0.0539
+Relative absolute error                  1.1472 %
+Root relative squared error             12.5085 %
+Total Number of Instances             2737     
+
+=== Detailed Accuracy By Class ===
+
+               TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
+                 0.997     0.003      0.999     0.997     0.998      0.997    M
+                 0.997     0.003      0.991     0.997     0.994      0.997    B
+Weighted Avg.    0.997     0.003      0.997     0.997     0.997      0.997
+
+=== Confusion Matrix ===
+
+    a    b   <-- classified as
+ 2056    6 |    a = M
+    2  673 |    b = B
+
