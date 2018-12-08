@@ -117,3 +117,6 @@ static_final.py
 readelf4.py
 final_keel.names
 final_keel.data
+keel/ucs
+keel/xcs
+keel/gassist_adi
