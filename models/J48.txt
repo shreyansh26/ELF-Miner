@@ -1,9 +1,9 @@
 === Run information ===
 
 Scheme:weka.classifiers.trees.J48 -C 0.25 -M 2
-Relation:     final-weka.filters.unsupervised.attribute.Remove-R1
-Instances:    9125
-Attributes:   148
+Relation:     final_final_1
+Instances:    9122
+Attributes:   147
 [list of attributes omitted]
 Test mode:split 70.0% train, remainder test
 
@@ -12,12 +12,12 @@ Test mode:split 70.0% train, remainder test
 J48 pruned tree
 ------------------
 
-DYNRELAENT <= 0: M (6914.0/4.0)
+DYNRELAENT <= 0: M (6911.0/4.0)
 DYNRELAENT > 0
 |   .plt_flags = AX
 |   |   s_STT_FUNC_STB_GLOBAL <= 23
-|   |   |   .rodata_size <= 779920: B (2146.0/7.0)
-|   |   |   .rodata_size > 779920
+|   |   |   .rodata_size <= 7837984: B (2146.0/7.0)
+|   |   |   .rodata_size > 7837984
 |   |   |   |   STT_NOTYPE_STB_GLOBAL <= 1: M (7.0)
 |   |   |   |   STT_NOTYPE_STB_GLOBAL > 1: B (18.0)
 |   |   s_STT_FUNC_STB_GLOBAL > 23
@@ -32,30 +32,31 @@ Number of Leaves  : 	8
 Size of the tree : 	15
 
 
-Time taken to build model: 0.77 seconds
+Time taken to build model: 0.49 seconds
 
 === Evaluation on test split ===
 === Summary ===
 
-Correctly Classified Instances        2730               99.7442 %
-Incorrectly Classified Instances         7                0.2558 %
-Kappa statistic                          0.9931
-Mean absolute error                      0.0033
-Root mean squared error                  0.0505
-Relative absolute error                  0.9143 %
-Root relative squared error             11.7128 %
+Correctly Classified Instances        2728               99.6712 %
+Incorrectly Classified Instances         9                0.3288 %
+Kappa statistic                          0.9912
+Mean absolute error                      0.0043
+Root mean squared error                  0.0561
+Relative absolute error                  1.1758 %
+Root relative squared error             13.0218 %
 Total Number of Instances             2737     
 
 === Detailed Accuracy By Class ===
 
                TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
-                 0.998     0.003      0.999     0.998     0.998      0.997    M
-                 0.997     0.002      0.993     0.997     0.995      0.997    B
-Weighted Avg.    0.997     0.003      0.997     0.997     0.997      0.997
+                 0.996     0.001      1         0.996     0.998      0.998    M
+                 0.999     0.004      0.988     0.999     0.993      0.998    B
+Weighted Avg.    0.997     0.002      0.997     0.997     0.997      0.998
 
 === Confusion Matrix ===
 
     a    b   <-- classified as
- 2057    5 |    a = M
-    2  673 |    b = B
+ 2055    8 |    a = M
+    1  673 |    b = B
+
 

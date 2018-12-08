@@ -1,43 +1,44 @@
 === Run information ===
 
 Scheme:weka.classifiers.trees.RandomForest -I 100 -K 0 -S 1
-Relation:     final-weka.filters.unsupervised.attribute.Remove-R1
-Instances:    9125
-Attributes:   148
+Relation:     final_final_1
+Instances:    9122
+Attributes:   147
 [list of attributes omitted]
 Test mode:split 70.0% train, remainder test
 
 === Classifier model (full training set) ===
 
 Random forest of 100 trees, each constructed while considering 8 random features.
-Out of bag error: 0.0014
+Out of bag error: 0.0015
 
 
 
-Time taken to build model: 2.54 seconds
+Time taken to build model: 2.9 seconds
 
 === Evaluation on test split ===
 === Summary ===
 
-Correctly Classified Instances        2730               99.7442 %
-Incorrectly Classified Instances         7                0.2558 %
-Kappa statistic                          0.9931
-Mean absolute error                      0.0072
-Root mean squared error                  0.046 
-Relative absolute error                  1.9589 %
-Root relative squared error             10.6703 %
+Correctly Classified Instances        2726               99.5981 %
+Incorrectly Classified Instances        11                0.4019 %
+Kappa statistic                          0.9892
+Mean absolute error                      0.0037
+Root mean squared error                  0.0504
+Relative absolute error                  1.0204 %
+Root relative squared error             11.7034 %
 Total Number of Instances             2737     
 
 === Detailed Accuracy By Class ===
 
                TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
-                 0.997     0.001      1         0.997     0.998      1        M
-                 0.999     0.003      0.991     0.999     0.995      1        B
-Weighted Avg.    0.997     0.002      0.997     0.997     0.997      1    
+                 0.996     0.003      0.999     0.996     0.997      1        M
+                 0.997     0.004      0.987     0.997     0.992      1        B
+Weighted Avg.    0.996     0.003      0.996     0.996     0.996      1    
 
 === Confusion Matrix ===
 
     a    b   <-- classified as
- 2056    6 |    a = M
-    1  674 |    b = B
+ 2054    9 |    a = M
+    2  672 |    b = B
+
 

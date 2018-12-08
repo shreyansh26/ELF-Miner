@@ -1,9 +1,9 @@
 === Run information ===
 
 Scheme:weka.classifiers.rules.PART -M 2 -C 0.25 -Q 1
-Relation:     final-weka.filters.unsupervised.attribute.Remove-R1
-Instances:    9125
-Attributes:   148
+Relation:     final_final_1
+Instances:    9122
+Attributes:   147
 [list of attributes omitted]
 Test mode:split 70.0% train, remainder test
 
@@ -22,18 +22,18 @@ STT_OBJECT_STB_WEAK <= 6 AND
 .rodata_alignment > 4: B (1402.0)
 
 DYNINIT_ARRAY > 0 AND
-.plt_size <= 288 AND
+.plt_size <= 648 AND
 StringTableIndex > 27: B (679.0)
 
 STT_NOTYPE <= 6 AND
 DYNINIT_ARRAY <= 0 AND
-StringTableIndex <= 28: M (104.0)
+StringTableIndex <= 28: M (101.0)
 
 s_STT_OBJECT_STB_GLOBAL <= 7 AND
 STT_NOTYPE_STB_WEAK > 2: B (90.0/1.0)
 
 .data_alignment <= 32 AND
-.bss_size > 8304: M (15.0)
+.bss_size > 31040: M (15.0)
 
 EntriesSection <= 30: M (8.0/1.0)
 
@@ -42,30 +42,31 @@ EntriesSection <= 30: M (8.0/1.0)
 Number of Rules  : 	8
 
 
-Time taken to build model: 0.49 seconds
+Time taken to build model: 0.94 seconds
 
 === Evaluation on test split ===
 === Summary ===
 
-Correctly Classified Instances        2730               99.7442 %
-Incorrectly Classified Instances         7                0.2558 %
-Kappa statistic                          0.9931
-Mean absolute error                      0.003 
-Root mean squared error                  0.0503
-Relative absolute error                  0.8207 %
-Root relative squared error             11.6667 %
+Correctly Classified Instances        2729               99.7077 %
+Incorrectly Classified Instances         8                0.2923 %
+Kappa statistic                          0.9921
+Mean absolute error                      0.0029
+Root mean squared error                  0.0509
+Relative absolute error                  0.798  %
+Root relative squared error             11.804  %
 Total Number of Instances             2737     
 
 === Detailed Accuracy By Class ===
 
                TP Rate   FP Rate   Precision   Recall  F-Measure   ROC Area  Class
-                 0.998     0.004      0.999     0.998     0.998      0.998    M
-                 0.996     0.002      0.994     0.996     0.995      0.998    B
-Weighted Avg.    0.997     0.004      0.997     0.997     0.997      0.998
+                 0.997     0.003      0.999     0.997     0.998      0.998    M
+                 0.997     0.003      0.991     0.997     0.994      0.998    B
+Weighted Avg.    0.997     0.003      0.997     0.997     0.997      0.998
 
 === Confusion Matrix ===
 
     a    b   <-- classified as
- 2058    4 |    a = M
-    3  672 |    b = B
+ 2057    6 |    a = M
+    2  672 |    b = B
+
 
