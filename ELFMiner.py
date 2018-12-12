@@ -4,6 +4,7 @@ import subprocess
 from subprocess import call
 import pandas as pd
 import csv
+import os
 
 features = []
 headers = []
@@ -213,9 +214,13 @@ def hash_table_size():
 def write_csv():
 	# print(features)
 	# print(headers)
-	with open("results.csv", "wb") as csv_file:
+	if not os.path.exists('./results.csv'):
+		with open("results.csv", "wb") as csv_file:
+			writer = csv.writer(csv_file, delimiter=',')
+			writer.writerow(headers)
+	with open("results.csv", "ab") as csv_file:
 		writer = csv.writer(csv_file, delimiter=',')
-		writer.writerow(headers)
+		# writer.writerow(headers)
 		writer.writerow(features)
 
 if __name__ == "__main__":
