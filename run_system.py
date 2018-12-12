@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-PATH = "DATASET_MALWARE_BENIGN/anmolPaper/linux_clean"
+PATH = "./elfs"
 
 for i in os.listdir(PATH):
 	file = os.path.join(os.path.join(os.getcwd(), PATH), i)
