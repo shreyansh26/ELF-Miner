@@ -18,7 +18,7 @@ This is an approximate implementation of the ELF Miner framework as described in
 This prints the predicted class (Malware or Benign) for each ELF file in the same order as in the generated **final.csv** in the **elfs** folder.
 
 ## Steps involved
-1. Run the ELF Miner framework for feature extraction on the given ELF files. The details of the dataset and the features that are extracted are explained in much detail in the presentation below. A total of 343 features are initially **342** features.
+1. Run the ELF Miner framework for feature extraction on the given ELF files. The details of the dataset and the features that are extracted are explained in much detail in the presentation linked below. A total of 343 features are initially **342** features.
 2. Perform some postprocessing on the CSV to convert values for certain attributes to a form suitable for applying Machine Learning.
 3. Perform Feature Selection on the CSV file. The features to remove were determined using Information Gain. For this we used WEKA. The features to remove are given in `feature_selection/weka_features_toremove.txt`. These are the ones which have 0 Information Gain. This reduces the number of features to **147**.
 4. Use the saved models (after training multiple classifiers using WEKA) to make predictions. The saved models and their details are present in `models` folder.
@@ -38,14 +38,4 @@ For the Non-Evolutionary Classifiers we have used the WEKA toolkit and for the E
 
 However, the end-to-end system incorporates a voting classifier based only on the Non-Evolutionary classifiers, due to the availability of WEKA's Java API.
 
-Presentation
--------------
-<style>
-.responsive-wrap iframe{ max-width: 100%;}
-</style>
-
-<div class="responsive-wrap">
-<!-- this is the embed code provided by Google -->
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT12_sI9gWoBe01UeGcgLKGAHX6WlK10x8wHjZSh3YbJPn1-_kY0SfPqxrqcp69jLl0dXk-2HBmhMbb/embed?start=false&loop=false&delayms=5000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-<!-- Google embed ends -->
-</div>
+## [Link to Presentation](https://shreyansh26.github.io/ELF-Miner/)
