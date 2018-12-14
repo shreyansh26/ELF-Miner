@@ -15,7 +15,7 @@ This is an approximate implementation of the ELF Miner framework as described in
 3. From the root of the project, run -
   `python run_system.py`
 
-This prints the class for each ELF file in the same order as in the generated **final.csv** in the **elfs** folder.
+This prints the predicted class (Malware or Benign) for each ELF file in the same order as in the generated **final.csv** in the **elfs** folder.
 
 ## Steps involved
 1. Run the ELF Miner framework for feature extraction on the given ELF files. The details of the dataset and the features that are extracted are explained in much detail in the presentation below. A total of 343 features are initially **342** features.
@@ -25,20 +25,22 @@ This prints the class for each ELF file in the same order as in the generated **
 
 Two classes of classifiers have been used in the paper -  
 1. Non-Evolutionary Classifiers
-  * JRip
-  * J48
-  * PART
-  * Random Forest
+    * JRip
+    * J48
+    * PART
+    * Random Forest
 2. Evolutionary Classifiers
-  * UCS
-  * XCS
-  * GAssist-Adi
+    * UCS
+    * XCS
+    * GAssist-Adi
 
 For the Non-Evolutionary Classifiers we have used the WEKA toolkit and for the Evolutionary Classifiers we have used the KEEL toolkit. The accuracy of each of these classifiers (on 70-30 split of train-test split) is given in `keel/results/results.txt`.
 
 However, the end-to-end system incorporates a voting classifier based only on the Non-Evolutionary classifiers, due to the availability of WEKA's Java API.
 
-## Presentation
+## Presentation   
+
+
 <style>
 .responsive-wrap iframe{ max-width: 100%;}
 </style>
