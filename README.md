@@ -39,3 +39,5 @@ For the Non-Evolutionary Classifiers we have used the WEKA toolkit and for the E
 However, the end-to-end system incorporates a voting classifier based only on the Non-Evolutionary classifiers, due to the availability of WEKA's Java API.
 
 ## [Link to Presentation](https://shreyansh26.github.io/ELF-Miner/)
+
+If you find any issues or bugs, feel free to open an issue or open a pull request if you wish to make an improvement.
